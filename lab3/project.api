@@ -1,0 +1,30 @@
+# control.h task.h
+!control.cpp control.h graphics.h keys_n_colors.h #<#>
+!main.cpp control.h graphics.h keys_n_colors.h task.h #<#>
+!task.cpp cstdlib ctime graphics.h keys_n_colors.h math.h task.h #<#>
+ struct@Control _type_ #<control.h>
+COLOR_MAX #<task.h>
+control_values : enum #<control.h>
+controls : Control[] #<control.cpp>
+count_lion : int #<task.cpp>
+create_control(int i, int left, int top) -> void #<control.cpp>
+create_control(int, int, int) -> void #<control.h>
+create_control_2(int i, int left, int top) -> void #<control.cpp>
+create_control_2(int, int, int) -> void #<control.h>
+createmask(IMAGE* p) -> IMAGE* #<task.cpp>
+drawimage(int x, int y, IMAGE* m, IMAGE* p) -> void #<task.cpp>
+generation : intk=0;void #<task.cpp>
+generation(int, int, int, int) -> void #<task.h>
+lions : point[] #<task.cpp>
+main() -> int #<main.cpp>
+point _type_ #<task.cpp>
+save() -> void #<task.h>
+select_control() -> int #<control.h>
+solve(int top, int left, int width, int height) -> void #<task.cpp>
+solve(int, int, int, int) -> void #<task.h>
+	Control::left : int #<control.h>
+	Control::top : int #<control.h>
+	Control::right : int #<control.h>
+	Control::bottom : int #<control.h>
+	point::x : int #<task.cpp>
+	point::y : int #<task.cpp>
