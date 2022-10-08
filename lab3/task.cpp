@@ -1,57 +1,79 @@
 #include <math.h>
 #include "graphics.h"
 #include "task.h"
+#include "control.h"
 #include "cstdlib"
 #include "ctime"
+#define M_PI 3.142592
 
-
-void generation(int left, int top, int width, int height)
+void drawLine(int x1,int y1)
 {
-   k = 1;
-   IMAGE *pic, *m, *back;
-   pic = loadBMP("lion1min.bmp");
-   back = loadBMP("arena.bmp");
-   m = createmask(pic);
+   setcolor(WHITE);
+   int x0 = getx(), y0 = gety();
+   int sx, sy, dx, dy, p;
+   
+   sx = x0 > x1 ? -1 : 1;
+   sy = y0 > y1 ? -1 : 1;
+   dx = abs(x1 - x0);
+   dy = abs(y1 - y0);
 
-   putimage(0, 0, back, COPY_PUT);
-
-   srand(time(0));
-   count_lion = rand() % 6 + 2;
-   for (int i = 0; i < count_lion; i++)
+   if (dx >= dy)
    {
-      lions[i].x = rand() % (730 - 280 + 1) + 280;
-      lions[i].y = rand() % (500 - 80 + 1) + 80;
-      drawimage(lions[i].x, lions[i].y, m, pic);
+      p = 2 * dy - dx;
+      for (int i = x0; i != x1; i += sx)
+      {
+         putpixel(i, y0, getcolor());
+         y0 = p > 0 ? y0 + sy : y0;
+         p = p > 0 ? p + 2 * (dy - dx) : p + 2 * dy;
+      }
+   }
+   else
+   {
+      p = 2 * dx - dy;
+      for (int i= y0; i != y1; i += sy)
+      {
+         putpixel(x0, i, getcolor());
+         x0 = p > 0 ? x0 + sx : x0;
+         p = p > 0 ? p + 2 * (dx - dy) : p + 2 * dx;
+      }
+   }
+    putpixel(x1, y1, WHITE);
+}
+
+void drawStar(int x0, int y0, int R, int n)
+{
+    double r = (R * cos(2 * M_PI / n)) / cos(M_PI / n);
+    double da = M_PI / n;
+    
+    for (int k = 0; k < 2 * n + 1; k++)
+    {
+        int l = k % 2 == 0 ? R : r;
+        double x = (x0 + l * cos(k * da));
+        double y = (y0 + l * sin(k * da));
+        if (k == 0) moveto(x, y);
+        drawLine(x, y);
+        moveto(x, y);
+    }
+   delay(10);
+   floodfill(x0, y0, getcolor());
+}
+
+void create(int r, int n)
+{
+   srand(time(0));
+   int x, y;
+   int count_demons = rand() % (10-2) + 2;
+   for (int i = 0; i < count_demons; i++)
+   {
+      x = rand() % (600 - 100 + 1) + 100;
+      y = rand() % (500 - 80 + 1) + 80;
+      drawStar(x, y, r, n);
    }
 }
 
-void solve(int top, int left, int width, int height)
+void clear()
 {
-   if (k == 1)
-   {
-      points_max[0].x=width;
-      points_max[0].y=height;
-      points_max[1].x= -1;
-      points_max[1].y= -1;
-
-      for (int i = 0; i < count_lion; i++)
-      {
-         if (lions[i].x < points_max[0].x)
-            points_max[0].x = lions[i].x;
-         if (lions[i].x > points_max[1].x)
-            points_max[1].x = lions[i].x;
-         if (lions[i].y < points_max[0].y)
-            points_max[0].y = lions[i].y;
-         if (lions[i].y > points_max[1].y)
-            points_max[1].y = lions[i].y;
-      }
-      setcolor(COLOR(rand() % 255, rand() % 255, rand() % 255));
-      setlinestyle(SOLID_LINE, 1, 4);
-      rectangle(points_max[0].x,
-         points_max[0].y,
-         points_max[1].x + imagewidth(loadBMP("lion1min.bmp")),
-         points_max[1].y + imageheight(loadBMP("lion1min.bmp")));
-   }
+  putimage(0, 0, loadBMP("background.bmp"), COPY_PUT);
 }
 void save()
 {

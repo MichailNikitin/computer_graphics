@@ -3,7 +3,7 @@
 #include "task.h"
 
 int R = 10, n = 5;
-
+using namespace std;
 int get_rad()
 {
    if (R < 10)
@@ -18,6 +18,16 @@ int get_n()
    if (n < 5)
       n = 5;
    return n;
+}
+
+void drawNum()
+{
+   int prom1 = get_rad();
+   int prom2 = get_n();
+   setbkcolor(TRANSPARENT);
+   settextstyle(EMPTY_FILL, HORIZ_DIR, 37);
+   outtextxy(264, 50, to_string(prom1).c_str());
+   outtextxy(510, 50, to_string(prom2).c_str());
 }
 
 int main()
@@ -45,10 +55,13 @@ int main()
       case NONE:
          break;
       case CREATE:
-         save();
+         create(n, R);
+         drawNum();
          break;
       case CLEAR:
-         closegraph();
+         clear();
+         R = 10;
+         n = 5;
          break;
       case PLUS_R:
          R += 5;

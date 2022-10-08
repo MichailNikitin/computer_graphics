@@ -1,7 +1,7 @@
 # control.h task.h
 !control.cpp control.h graphics.h keys_n_colors.h #<#>
 !main.cpp control.h graphics.h keys_n_colors.h task.h #<#>
-!task.cpp cstdlib ctime graphics.h keys_n_colors.h math.h task.h #<#>
+!task.cpp control.h cstdlib ctime graphics.h keys_n_colors.h limits.h math.h stdlib.h task.h time.h #<#>
  struct@Control _type_ #<control.h>
 COLOR_MAX #<task.h>
 FRAME #<control.h>
@@ -10,25 +10,33 @@ GAP_2 #<control.h>
 H #<control.h>
 HEIGHT #<control.h>
 HEIGHTB #<control.h>
+M_PI #<task.cpp>
 R : int #<main.cpp>
 W #<control.h>
 WIDTH #<control.h>
 WIDTHB #<control.h>
+clear() -> void #<task.h>
 control_values : enum #<control.h>
 controls : Control[] #<control.cpp>
+create(int r, int n) -> void #<task.cpp>
+create(int, int) -> void #<task.h>
 create_control_B(int i, int left, int top) -> void #<control.cpp>
 create_control_B(int, int, int) -> void #<control.h>
 create_control_M(int i, int left, int top) -> void #<control.cpp>
 create_control_M(int, int, int) -> void #<control.h>
 create_control_S(int i, int left, int top) -> void #<control.cpp>
 create_control_S(int, int, int) -> void #<control.h>
-generation(int left, int top, int width, int height) -> void #<task.cpp>
-generation(int, int, int, int) -> void #<task.h>
-get_rad : intn=5;int #<main.cpp>
+drawLine(int x1, int y1) -> void #<task.cpp>
+drawLine(int, int) -> void #<task.h>
+drawNum() -> void #<main.cpp>
+drawStar(int x0, int y0, int R, int n) -> void #<task.cpp>
+drawStar(int, int, int, int) -> void #<task.h>
+get_n() -> int #<task.h>
+get_rad() -> int #<task.h>
+main() -> int #<main.cpp>
 save() -> void #<task.h>
 select_control() -> int #<control.h>
-solve(int top, int left, int width, int height) -> void #<task.cpp>
-solve(int, int, int, int) -> void #<task.h>
+std : intn=5;using namespace #<main.cpp>
 	Control::left : int #<control.h>
 	Control::top : int #<control.h>
 	Control::right : int #<control.h>

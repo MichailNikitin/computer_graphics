@@ -3,8 +3,13 @@
 
 #define COLOR_MAX 255
 
-void generation(int, int, int, int);
-void solve(int, int, int, int);
+int get_rad();
+int get_n();
+
+void drawLine(int, int);
+void drawStar(int, int, int , int);
+void create(int, int);
+void clear();
 void save();
 
 #endif
