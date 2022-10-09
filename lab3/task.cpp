@@ -8,7 +8,6 @@
 
 void drawLine(int x1,int y1)
 {
-   setcolor(WHITE);
    int x0 = getx(), y0 = gety();
    int sx, sy, dx, dy, p;
    
@@ -37,11 +36,12 @@ void drawLine(int x1,int y1)
          p = p > 0 ? p + 2 * (dx - dy) : p + 2 * dx;
       }
    }
-    putpixel(x1, y1, WHITE);
+    putpixel(x1, y1, getcolor());
 }
 
 void drawStar(int x0, int y0, int R, int n)
 {
+   setcolor(RED);
     double r = (R * cos(2 * M_PI / n)) / cos(M_PI / n);
     double da = M_PI / n;
     
@@ -58,22 +58,23 @@ void drawStar(int x0, int y0, int R, int n)
    floodfill(x0, y0, getcolor());
 }
 
-void create(int r, int n)
+void create(int R, int n)
 {
+   
    srand(time(0));
    int x, y;
-   int count_demons = rand() % (10-2) + 2;
+   int count_demons = rand() % (n-2) + 2;
    for (int i = 0; i < count_demons; i++)
    {
       x = rand() % (600 - 100 + 1) + 100;
-      y = rand() % (500 - 80 + 1) + 80;
-      drawStar(x, y, r, n);
+      y = rand() % (400 - 80 + 1) + 80;
+      drawStar(x, y, R, n);
    }
 }
 
 void clear()
 {
-  putimage(0, 0, loadBMP("background.bmp"), COPY_PUT);
+  putimage(0, 0, loadBMP("dizayn-7.bmp"), COPY_PUT);
 }
 void save()
 {

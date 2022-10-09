@@ -4,13 +4,6 @@
 #define HEIGHT 600
 #define FRAME 20
 
-#define W 70
-#define H 40
-#define HEIGHTB 45
-#define WIDTHB 185
-#define GAP_1 60
-#define GAP_2 50
-
 
 
 enum control_values { NONE = -1, CREATE, CLEAR, EXIT, SAVE, PLUS_R, 

@@ -1,24 +1,17 @@
 # control.h task.h
 !control.cpp control.h graphics.h keys_n_colors.h #<#>
-!main.cpp control.h graphics.h keys_n_colors.h task.h #<#>
+!main.cpp control.h ctime graphics.h keys_n_colors.h stdio.h task.h time.h #<#>
 !task.cpp control.h cstdlib ctime graphics.h keys_n_colors.h limits.h math.h stdlib.h task.h time.h #<#>
  struct@Control _type_ #<control.h>
-COLOR_MAX #<task.h>
 FRAME #<control.h>
-GAP_1 #<control.h>
-GAP_2 #<control.h>
-H #<control.h>
 HEIGHT #<control.h>
-HEIGHTB #<control.h>
 M_PI #<task.cpp>
 R : int #<main.cpp>
-W #<control.h>
 WIDTH #<control.h>
-WIDTHB #<control.h>
 clear() -> void #<task.h>
 control_values : enum #<control.h>
 controls : Control[] #<control.cpp>
-create(int r, int n) -> void #<task.cpp>
+create(int R, int n) -> void #<task.cpp>
 create(int, int) -> void #<task.h>
 create_control_B(int i, int left, int top) -> void #<control.cpp>
 create_control_B(int, int, int) -> void #<control.h>
