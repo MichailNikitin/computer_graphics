@@ -48,7 +48,9 @@ int main()
    while (true)
    {
       setcolor(RED);
-      while (mousebuttons() == 1){
+
+      while (mousebuttons() != 1);
+
       printf("r = %d, n = %d", R, n);
       switch (select_control())
       {
@@ -71,7 +73,7 @@ int main()
       case MINUS_R:
          R -= 5;
          R=get_rad();
-         delay(10);
+         delay(30);
          break;
       case PLUS_N:
          n++;
@@ -89,7 +91,7 @@ int main()
       case EXIT:
          closegraph();
          return 0;
+
       }
-   }
    }
 }

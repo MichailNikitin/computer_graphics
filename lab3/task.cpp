@@ -4,7 +4,7 @@
 #include "control.h"
 #include "cstdlib"
 #include "ctime"
-#define M_PI 3.142592
+#define M_PI 3.141592
 
 void drawLine(int x1,int y1)
 {
