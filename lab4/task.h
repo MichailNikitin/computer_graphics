@@ -1,13 +1,15 @@
 #ifndef TASK_H
 #define TASK_H
 
-int get_rad();
-int get_n();
+#define COLOR_MAX 255
+#define WIDTH 800
+#define HIEGHT 1000
+#define FRAMESIDE 5
+#define FRAMELOWER 110
 
-void drawLine(int, int);
-void drawStar(int, int, int , int);
-void create(int, int);
-void clear();
+
+void generation();
+void repainting();
 void save();
 
 #endif

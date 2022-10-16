@@ -1,34 +1,31 @@
 # control.h task.h
 !control.cpp control.h graphics.h keys_n_colors.h #<#>
-!main.cpp control.h ctime graphics.h keys_n_colors.h stdio.h task.h time.h #<#>
-!task.cpp control.h cstdlib ctime graphics.h keys_n_colors.h limits.h math.h stdlib.h task.h time.h #<#>
+!main.cpp control.h graphics.h keys_n_colors.h task.h #<#>
+!task.cpp cmath cstdlib ctime graphics.h keys_n_colors.h limits limits.h math.h stdlib.h task.h time.h type_traits #<#>
  struct@Control _type_ #<control.h>
-FRAME #<control.h>
-HEIGHT #<control.h>
-M_PI #<task.cpp>
-R : int #<main.cpp>
-WIDTH #<control.h>
-clear() -> void #<task.h>
+COLOR_MAX #<task.h>
+FRAMELOWER #<task.h>
+FRAMESIDE #<task.h>
+HIEGHT #<task.h>
+SIZEBUTTONB #<control.h>
+SIZEBUTTONS #<control.h>
+WIDTH #<task.h>
+_USE_MATH_DEFINES #<task.cpp>
 control_values : enum #<control.h>
 controls : Control[] #<control.cpp>
-create(int R, int n) -> void #<task.cpp>
-create(int, int) -> void #<task.h>
-create_control_B(int i, int left, int top) -> void #<control.cpp>
-create_control_B(int, int, int) -> void #<control.h>
-create_control_M(int i, int left, int top) -> void #<control.cpp>
-create_control_M(int, int, int) -> void #<control.h>
+create_control(int i, int left, int top) -> void #<control.cpp>
+create_control(int, int, int) -> void #<control.h>
 create_control_S(int i, int left, int top) -> void #<control.cpp>
 create_control_S(int, int, int) -> void #<control.h>
-drawCircle(int x0, int y0, int R) -> void #<task.cpp>
-drawLine(int, int) -> void #<task.h>
-drawNum() -> void #<main.cpp>
-drawStar(int, int, int, int) -> void #<task.h>
-get_n() -> int #<task.h>
-get_rad() -> int #<task.h>
+cycle(int x0, int y0, int R) -> void #<task.cpp>
+cycles(int x0, int y0, int R) -> void #<task.cpp>
+drawed : bool #<task.cpp>
+generation() -> void #<task.h>
 main() -> int #<main.cpp>
+makeColors(int x0, int y0) -> void #<task.cpp>
+repainting() -> void #<task.h>
 save() -> void #<task.h>
 select_control() -> int #<control.h>
-std : intn=5;using namespace #<main.cpp>
 	Control::left : int #<control.h>
 	Control::top : int #<control.h>
 	Control::right : int #<control.h>

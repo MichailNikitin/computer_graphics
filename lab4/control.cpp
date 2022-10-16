@@ -1,32 +1,24 @@
 #include "graphics.h"
 #include "control.h"
 
+
 Control controls[N_CONTROLS];
 
-void create_control_B(int i, int left, int top)
+void create_control(int i, int left, int top)
 {
    controls[i].left = left;
    controls[i].top = top;
-   controls[i].right = left + 200;
-   controls[i].bottom = top + 70;
-}
-
-void create_control_M(int i, int left, int top)
-{
-   controls[i].left = left;
-   controls[i].top = top;
-   controls[i].right = left + 70;
-   controls[i].bottom = top  + 70;
+   controls[i].right = left + SIZEBUTTONB*3;
+   controls[i].bottom = top + SIZEBUTTONB;
 }
 
 void create_control_S(int i, int left, int top)
 {
    controls[i].left = left;
    controls[i].top = top;
-   controls[i].right = left + 40;
-   controls[i].bottom = top  + 40;
+   controls[i].right = left + SIZEBUTTONS;
+   controls[i].bottom = top  + SIZEBUTTONS;
 }
-
 int select_control()
 {
    int x, y;
