@@ -1,4 +1,4 @@
-#define _USE_MATH_DEFINES 
+#define _USE_MATH_DEFINES
 #include <cmath>
 #include "graphics.h"
 #include "task.h"
@@ -7,7 +7,6 @@
 
 using namespace std;
 bool drawed=false;
-
 void cycle(int x0, int y0, int R) {
    int color=COLOR_MAX ;
 
@@ -37,7 +36,7 @@ void cycle(int x0, int y0, int R) {
    }
 }
 
-void makeColors(int x0,int y0) {
+void makeColors(int x0,int y0, int seed_color) {
    int x,y;
    double df=M_PI/6, da=df/2;
 
@@ -72,16 +71,21 @@ void cycles(int x0, int y0, int R) {
       cycle(x0+R*cos((M_PI/6)*i), y0+R*sin((M_PI/6)*i),  R);
 }
 
-void generation(){
-   cycles(WIDTH,350,150);
+void generation() {
+   cycles(WIDTH/2,(WIDTH-FRAMELOWER)/2,FRAMELOWER+50);
    drawed=true;
 }
 void repainting() {
+
    if (!drawed) return;
-      while (mousebuttons()!=0);
-   
-      makeColors(400,350);
-   
+
+   while (mousebuttons()!=0);
+   int seed_color=rand()%WHITE;
+   setfillstyle(SOLID_FILL, seed_color);
+
+   makeColors(WIDTH/2,(WIDTH-FRAMELOWER)/2, seed_color);
+   cycle(3*WIDTH/5+INDENT, HIEGHT-INDENT-3*FRAMESIDE/2,INDENT+1);   // 3*FRAMELOWER-FRAMESIDE ,5*FRAMELOWER-FRAMESIDE ,INDENT-1
+   floodfill(3*WIDTH/5+INDENT, HIEGHT-INDENT-3*FRAMESIDE/2,COLOR_MAX);
 }
 
 void save()
