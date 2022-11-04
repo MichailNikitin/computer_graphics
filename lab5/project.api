@@ -1,0 +1,39 @@
+# control.h task.h
+!control.cpp control.h graphics.h keys_n_colors.h #<#>
+!main.cpp control.h graphics.h keys_n_colors.h task.h #<#>
+!task.cpp cmath control.h cstdlib ctime format graphics.h keys_n_colors.h task.h #<#>
+ struct@Control _type_ #<control.h>
+ struct@Point _type_ #<task.h>
+COLOR_MAX #<task.h>
+FRAMELOWER #<task.h>
+FRAMESIDE #<task.h>
+HIEGHT #<task.h>
+INDENT #<task.h>
+SIZEBUTTONB #<control.h>
+SIZEBUTTONS #<control.h>
+WIDTH #<task.h>
+_USE_MATH_DEFINES #<task.cpp>
+bezie() -> void #<task.h>
+chaikin() -> void #<task.h>
+control_values : enum #<control.h>
+controls : Control[] #<control.cpp>
+coords(int x, int y) -> void #<task.cpp>
+coords(int, int) -> void #<task.h>
+create_control(int i, int left, int top) -> void #<control.cpp>
+create_control(int, int, int) -> void #<control.h>
+create_control_S(int i, int left, int top) -> void #<control.cpp>
+create_control_S(int, int, int) -> void #<control.h>
+createmask(IMAGE* p) -> IMAGE* #<task.cpp>
+drawed : bool #<task.cpp>
+drawimage(int x, int y, IMAGE* m, IMAGE* p) -> void #<task.cpp>
+generation() -> void #<task.h>
+main() -> int #<main.cpp>
+points : Point[] #<task.cpp>
+save() -> void #<task.h>
+select_control() -> int #<control.h>
+	Control::left : int #<control.h>
+	Control::top : int #<control.h>
+	Control::right : int #<control.h>
+	Control::bottom : int #<control.h>
+	Point::x : int #<task.h>
+	Point::y : int #<task.h>
