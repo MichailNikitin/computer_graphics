@@ -2,6 +2,7 @@
 #include "control.h"
 #include "polygon.hpp"
 
+
 int main()
 {
    initwindow(WIDTH, HIEGHT, "BrutalMagica");
