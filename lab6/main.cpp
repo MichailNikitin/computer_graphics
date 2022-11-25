@@ -7,9 +7,9 @@ int main()
 {
    initwindow(WIDTH, HIEGHT, "BrutalMagica");
    putimage(0, 0, loadBMP("BrutalMagica.bmp"), COPY_PUT);
-   create_control(CCWROT,  FRAMESIDE, FRAMELOWER);
-   create_control(CWROT, INDENT+3*FRAMESIDE,
-                  FRAMELOWER);
+   create_control_S(CCWROT,  FRAMESIDE, FRAMELOWER);
+   create_control_S(CWROT, INDENT+3*FRAMESIDE,
+                    FRAMELOWER);
    create_control(MOVE,  SIZEBUTTONB - 2*INDENT,
                   FRAMELOWER);
    create_control(SCALE,  2*SIZEBUTTONB,
@@ -18,23 +18,23 @@ int main()
                     FRAMELOWER);
    create_control_S(EXIT, WIDTH-3*FRAMESIDE+INDENT,
                     FRAMELOWER);
-   int type = 0;
-   
+   int type = TNONE;
+
    Figura figura;
 
    while (true)
    {
-      while (mousebuttons() != 1) {
+      while (mousebuttons() != 1) {}
          switch (select_control()) {
          case NONE:
             break;
          case CCWROT:
             figura.rotate(-1);
-            type = 0;
+            type = TNONE;
             break;
          case CWROT:
             figura.rotate(1);
-            type = 0;
+            type = TNONE;
             break;
          case SCALE:
             type = TSCALE;
@@ -44,7 +44,7 @@ int main()
             break;
          case SAVE:
             save();
-            type = 0;
+            type = TNONE;
             break;
          case EXIT:
             return 0;
@@ -77,10 +77,9 @@ int main()
                figura.scale(0.975);
                break;
             }
-            break;
-
+         case TNONE:
             break;
          }
-      }
+      
    }
 }
