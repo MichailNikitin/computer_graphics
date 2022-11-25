@@ -1,6 +1,6 @@
 #include "graphics.h"
 #include "control.h"
-#include "polygon.hpp"
+#include "figura.hpp"
 
 
 int main()
@@ -20,8 +20,7 @@ int main()
                     FRAMELOWER);
    int type = 0;
    
-   Polygon figura;
-   figura.read_info();
+   Figura figura;
 
    while (true)
    {

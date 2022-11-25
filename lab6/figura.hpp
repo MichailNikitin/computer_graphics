@@ -1,5 +1,5 @@
-#ifndef Polygon_H
-#define Polygon_H
+#ifndef Figura_H
+#define Figura_H
 
 struct Point
 {
@@ -7,7 +7,7 @@ struct Point
    double y = 0;
 };
 
-class Polygon
+class Figura
 {
    int count_vertices;
    Point *plg_points;
@@ -16,12 +16,12 @@ class Polygon
    double plg_factor = 1;
 
 public:
-   Polygon();
+   Figura();
+   ~Figura() = default;
    void move(double x, double y);
    void rotate(double angle);
    void scale(double factor);
    void draw();
-   void read_info();
 };
 
 #endif

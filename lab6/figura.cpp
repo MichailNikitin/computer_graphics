@@ -1,5 +1,5 @@
 #include "graphics.h"
-#include "polygon.hpp"
+#include "figura.hpp"
 #include "control.h"
 #include <cmath>
 
@@ -7,36 +7,42 @@
 #include <fstream>
 const double PI = acos(0.0)*2.0;
 using namespace std;
-Polygon::Polygon()
+Figura::Figura()
 {
    
    plg_points = new Point[count_vertices];
-
+   
+   ifstream file;
+   file.open("info_for_figure.txt");
+   file >> count_vertices;
+   for (int i=0; i<count_vertices; i++) {
+      file >> plg_points[i].x >> plg_points[i].y;
+   }
 }
 
-void Polygon::rotate(double angle)
+void Figura::rotate(double angle)
 {
    plg_angle += angle*(PI/180.0);
    draw();
 }
 
-void Polygon::move(double x, double y)
+void Figura::move(double x, double y)
 {
    plg_center.x += x;
    plg_center.y += y;
    draw();
 }
 
-void Polygon::scale(double factor)
+void Figura::scale(double factor)
 {
    plg_factor *= factor;
    draw();
 }
 
-void Polygon::draw()
+void Figura::draw()
 {
    Point points[count_vertices];
-
+   int *point4drow = new int[count_vertices*2];
    for (int i = 0; i < count_vertices; i++)
    {
       points[i] = plg_points[i];
@@ -57,25 +63,17 @@ void Polygon::draw()
       points[i].x = points[i].x + WIDTH/2.0;
       points[i].y = HIEGHT/2.0 - points[i].y;
    }
-
-   // Преобразование в 5 прямоугольников (которые составляют знак +)
    
-   // Отрисовка
-
+   for (int i = 0; i < 2*count_vertices; i+=2){
+      point4drow[i] =points[i].x;
+      point4drow[i+1] = points[i].y;
+   }
+   
+   
    setfillstyle(SOLID_FILL, BLACK);
-
+   fillpoly(count_vertices, point4drow);
 
    setcolor(YELLOW);
    setfillstyle(SOLID_FILL, YELLOW);
 
-}
-
-void Polygon::read_info()
-{
-   ifstream file;
-   file.open("info_for_figure.txt");
-   file >> count_vertices;
-   for (int i=0; i<count_vertices; i++) {
-      file >> plg_points[i].x >> plg_points[i].y;
-   }
 }
