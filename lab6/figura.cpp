@@ -20,9 +20,20 @@ Figura::Figura()
    
    for (int i=0; i<count_vertices; i++) {
       file >> plg_points[i].x >> plg_points[i].y;
+      
       printf("(%.2lf;%.2lf)-", plg_points[i].x, plg_points[i].y);
    }
+   calc_center();
    draw();
+}
+
+void Figura::calc_center(){
+   for(int i=0; i<count_vertices; i++){
+      center.x += plg_points[i].x;
+      center.y += plg_points[i].y;
+   }
+   center.x /= count_vertices;
+   center.y /= count_vertices;
 }
 
 void Figura::rotate(double angle)
@@ -52,24 +63,30 @@ void Figura::draw()
    for (int i = 0; i < count_vertices; i++)
    {
       points[i] = plg_points[i];
-
+      
+      // Перемещение
+      
+      points[i].x += plg_center.x;
+      points[i].y += plg_center.y;
+      calc_center();
+      
       // Поворот
-      points[i].x = cos(plg_angle)*plg_points[i].x - sin(plg_angle)*plg_points[i].y;
-      points[i].y = sin(plg_angle)*plg_points[i].x + cos(plg_angle)*plg_points[i].y;
+      //~ points[i].x = cos(plg_angle)*plg_points[i].x - sin(plg_angle)*plg_points[i].y;
+      //~ points[i].y = sin(plg_angle)*plg_points[i].x + cos(plg_angle)*plg_points[i].y;
+      points[i].x = center.x+(-center.x+plg_points[i].x)*cos(plg_angle)+(center.y-plg_points[i].y)*sin(plg_angle);
+      points[i].y = center.y+(-center.x+plg_points[i].x)*sin(plg_angle)+(-center.y+plg_points[i].y)*cos(plg_angle);
 
       // 
       points[i].x *= plg_factor;
       points[i].y *= plg_factor;
 
-      // Перемещение
-      points[i].x += plg_center.x;
-      points[i].y += plg_center.y;
+      
 
       // Преобразование из декартовых в экранные
       points[i].x = points[i].x + WIDTH/2.0;
       points[i].y = HIEGHT/2.0 - points[i].y;
    }
-   
+   // Подготовка массива для постораениея многоугольника
    for (int i = 0; i < 2*count_vertices; i+=2){
       printf("(%.2lf;%.2lf)-", points[i/2].x, points[i/2].y);
       point4drow[i] =points[i/2].x;
