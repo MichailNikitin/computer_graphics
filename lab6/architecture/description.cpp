@@ -1,15 +1,5 @@
-#include "graphics.h"
-#include "figura.hpp"
-#include "control.h"
-#include <cmath>
-#include <control.h>
-#include <fstream>
-
-#include <format>
-#include <iostream>
-
 const double PI = acos(0.0)*2.0;
-using namespace std;
+// конструктор
 Figura::Figura()
 {
    ifstream file;
@@ -18,15 +8,12 @@ Figura::Figura()
    
    plg_points = new Point[count_vertices];
    
-   for (int i=0; i<count_vertices; i++) {
+   for (int i=0; i<count_vertices; i++)
       file >> plg_points[i].x >> plg_points[i].y;
-      
-      printf("(%.2lf;%.2lf)-", plg_points[i].x, plg_points[i].y);
-   }
    calc_center();
    draw();
 }
-
+// Рассчет цетра фигуры
 void Figura::calc_center(){
    for(int i=0; i<count_vertices; i++){
       center.x += plg_points[i].x;
@@ -35,26 +22,26 @@ void Figura::calc_center(){
    center.x /= count_vertices;
    center.y /= count_vertices;
 }
-
+// Изменение угра фигуры
 void Figura::rotate(double angle)
 {
    plg_angle += angle*(PI/180.0);
    draw();
 }
-
+// Смещение фигуры
 void Figura::move(double x, double y)
 {
    plg_center.x += x;
    plg_center.y += y;
    draw();
 }
-
+// Изменение масштаба
 void Figura::scale(double factor)
 {
    plg_factor *= factor;
    draw();
 }
-
+// прорисовка
 void Figura::draw()
 {
    Point points[count_vertices];
@@ -64,29 +51,29 @@ void Figura::draw()
    {
       points[i] = plg_points[i];
       
-      // �����������
-      
+      // Перемещение
       points[i].x += plg_center.x;
       points[i].y += plg_center.y;
       calc_center();
       
-      // �������
-      //~ points[i].x = cos(plg_angle)*plg_points[i].x - sin(plg_angle)*plg_points[i].y;
-      //~ points[i].y = sin(plg_angle)*plg_points[i].x + cos(plg_angle)*plg_points[i].y;
-      points[i].x = center.x+(-center.x+plg_points[i].x)*cos(plg_angle)+(center.y-plg_points[i].y)*sin(plg_angle);
-      points[i].y = center.y+(-center.x+plg_points[i].x)*sin(plg_angle)+(-center.y+plg_points[i].y)*cos(plg_angle);
+      // Поворот
+      points[i].x =
+		 center.x+(-center.x+plg_points[i].x)*cos(plg_angle)+
+		(center.y-plg_points[i].y)*sin(plg_angle);
+      points[i].y =
+		 center.y+(-center.x+plg_points[i].x)*sin(plg_angle)+
+		(-center.y+plg_points[i].y)*cos(plg_angle);
 
-      // 
+      // Масштабирование
       points[i].x *= plg_factor;
       points[i].y *= plg_factor;
 
-      
-
-      // �������������� �� ���������� � ��������
+      // Преобразование из декартовых в экранные
       points[i].x = points[i].x + WIDTH/2.0;
       points[i].y = HIEGHT/2.0 - points[i].y;
    }
-   // ���������� ������� ��� ������������ ��������������
+
+   // Подготовка массива для постораениея многоугольника
    for (int i = 0; i < 2*count_vertices; i+=2){
       printf("(%.2lf;%.2lf)-", points[i/2].x, points[i/2].y);
       point4drow[i] =points[i/2].x;

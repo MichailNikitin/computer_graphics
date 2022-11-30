@@ -1,10 +1,7 @@
-#ifndef Figura_H
-#define Figura_H
-
 struct Point
 {
-   double x = 10;
-   double y = 10;
+   double x = 0;
+   double y = 0;
 };
 
 class Figura
@@ -25,5 +22,3 @@ public:
    void scale(double factor);
    void draw();
 };
-
-#endif

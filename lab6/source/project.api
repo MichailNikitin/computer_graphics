@@ -1,0 +1,43 @@
+# control.h figura.hpp
+!control.cpp control.h graphics.h keys_n_colors.h #<#>
+!figura.cpp cctype cerrno clocale cmath control.h cstdint cstdio cstdlib ctype.h cwchar cwctype errno.h exception figura.hpp fstream graphics.h initializer_list ios iosfwd iostream istream keys_n_colors.h limits limits.h locale.h math.h new ostream signal.h stddef.h stdexcept stdint.h stdio.h stdlib.h streambuf string string_view system_error type_traits typeinfo wchar.h wctype.h #<#>
+!main.cpp control.h figura.hpp graphics.h keys_n_colors.h #<#>
+ struct@Control _type_ #<control.h>
+FRAMELOWER #<control.h>
+FRAMESIDE #<control.h>
+Figura _type_ #<figura.hpp>
+Figura() #<figura.hpp>
+HIEGHT #<control.h>
+INDENT #<control.h>
+PI : const double #<figura.cpp>
+Point _type_ #<figura.hpp>
+SIZEBUTTONB #<control.h>
+SIZEBUTTONS #<control.h>
+WIDTH #<control.h>
+control_values : enum #<control.h>
+controls : Control[] #<control.cpp>
+create_control(int i, int left, int top) -> void #<control.cpp>
+create_control(int, int, int) -> void #<control.h>
+create_control_S(int i, int left, int top) -> void #<control.cpp>
+create_control_S(int, int, int) -> void #<control.h>
+main() -> int #<main.cpp>
+save() -> void #<control.h>
+select_control() -> int #<control.h>
+type_function : enum #<control.h>
+	Control::left : int #<control.h>
+	Control::top : int #<control.h>
+	Control::right : int #<control.h>
+	Control::bottom : int #<control.h>
+	Figura:%count_vertices : int #<figura.hpp>
+	Figura:%plg_points : Point* #<figura.hpp>
+	Figura:%plg_center : Point #<figura.hpp>
+	Figura:%center : Point #<figura.hpp>
+	Figura:%plg_angle : double #<figura.hpp>
+	Figura:%plg_factor : double #<figura.hpp>
+	Figura::calc_center() -> void #<figura.hpp>
+	Figura::move(double x, double y) -> void #<figura.hpp>
+	Figura::rotate(double angle) -> void #<figura.hpp>
+	Figura::scale(double factor) -> void #<figura.hpp>
+	Figura::draw() -> void #<figura.hpp>
+	Point::x : double #<figura.hpp>
+	Point::y : double #<figura.hpp>
