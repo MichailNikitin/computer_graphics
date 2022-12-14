@@ -10,21 +10,21 @@ using namespace std;
 #define COLOR_MAX 255
 #define PI 3.14159265359
 
-class Figure {
-   
+const int W = 600, H = 400;
+struct Figure {
    int VertexNum, FaceNum;
    vector<vector<double>> vertices;
    vector<vector<int>> faces;
    double cx, cy, cz;
-
-public:
-   Figure();
-   void Rotate(int plot);
-   void Move(int plot);
-   void draw();
-   void XoZ();
-   void YoZ();
 };
+Figure Create();
 
+void Rotate(Figure &A, int plot);
+void Move(Figure &A, int plot);
+
+void XoY(Figure f);
+void XoZ(Figure f);
+void YoZ(Figure f);
+void save(Figure a);
 
 #endif

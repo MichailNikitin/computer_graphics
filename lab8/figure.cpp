@@ -79,8 +79,7 @@ void Figure::Move(int plot){
 }
 
 void Figure::draw() {
-   setfillstyle(1, BLACK);
-   bar(0, 0, 600, 400);
+putimage(0, 0, loadBMP("hologram.bmp"), COPY_PUT);
    for (int i = 0; i < FaceNum; i++) {
       int k = 0;
       for (int j = 0; j < 4; j++) {

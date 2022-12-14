@@ -5,26 +5,28 @@
 
 
 int main() {
-   initwindow(500, 450);
-   clearviewport();
-
-   create_control (SAVE, 300, 400, "interface/save.bmp");
-   create_control (EXIT, 400, 400, "interface/exit.bmp");
-   create_control (MOVEX, 0, 400, "interface/move_x.bmp");
-   create_control (MOVEY, 50, 400, "interface/move_y.bmp");
-   create_control (MOVEZ, 100, 400, "interface/move_z.bmp");
-   create_control (TURNXY, 150, 400, "interface/turn_xy.bmp");
-   create_control (TURNXZ, 200, 400, "interface/turn_xz.bmp");
-   create_control (TURNYZ, 250, 400, "interface/turn_zy.bmp");
+   initwindow(WIDTH, HIEGHT);
+   clearviewport(); 
    
 
-   setfillstyle(1, BLACK);
-   bar(0, 0, 600, 400);
+   create_control (MOVEZ, 80, 490);
+   create_control (MOVEX, 220, 490);
+   create_control (MOVEY, 360, 490);
+   create_control (TURNXY, 500, 490);
+   create_control (TURNXZ, 640, 490);
+   create_control (TURNYZ, 780, 490);
+      create_control (SAVE, 940, 490);
+   create_control (EXIT, 1060, 490);
+   
+   putimage(0, 0, loadBMP("hologram.bmp"), COPY_PUT);
    
    Figure figure;
    figure.draw();
 
+   
+   
    while (true) {
+   
       while (mousebuttons() != 1);
       switch (select_control()) {
          case NONE: break;

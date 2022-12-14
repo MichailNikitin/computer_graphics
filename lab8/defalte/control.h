@@ -1,11 +1,6 @@
 #ifndef CONTROL_H
 #define CONTROL_H
 
-#define WIDTH 1200
-#define HIEGHT 600
-#define SIZEBUTTONS 120
-#define INDENT 10
-
 enum control_values { NONE = -1, EXIT, SAVE,
    MOVEX, MOVEY, MOVEZ,
    TURNXY, TURNXZ, TURNYZ,
@@ -18,7 +13,7 @@ struct Control {
    int bottom;
 };
 
-void create_control(int, int, int);
+void create_control(int, int, int, const char*);
 int select_control();
-void save();
+
 #endif
