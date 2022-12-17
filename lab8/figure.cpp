@@ -5,9 +5,9 @@
 
 int p[30];
 
-int dx[3] = {1, 0, 0};
-int dy[3] = {0, 1, 0};
-int dz[3] = {0, 0, 1};
+int dx[3] = {3, 0, 0};
+int dy[3] = {0, 3, 0};
+int dz[3] = {0, 0, 3};
 
 Figure::Figure() { 
    ifstream in("data.txt");
